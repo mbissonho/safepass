@@ -43,6 +43,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(HomeActivity.this, ManageContaActivity.class);
+                    intent.putExtra("id",0);
                     startActivity(intent);
                 }
             });
@@ -117,7 +118,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_nova_conta:
 
                 this.drawerLayout.closeDrawer(GravityCompat.START);
-                launchMessage("Criar nova conta!");
+
+                Intent intent = new Intent(HomeActivity.this, ManageContaActivity.class);
+                intent.putExtra("id",0);
+                startActivity(intent);
+
                 return true;
 
             case R.id.nav_gerar_senha:
@@ -149,7 +154,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onClick(Object object) {
-
+        Conta c = (Conta) object;
+        Intent intent = new Intent(HomeActivity.this, ManageContaActivity.class);
+        intent.putExtra("id", c.getId());
+        startActivity(intent);
     }
 
     @Override
@@ -160,20 +168,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     public List<Conta> getContas() {
 
-        ArrayList<Conta> contas = new ArrayList<Conta>();
+        return this.realm.where(Conta.class).findAll();
 
-        Conta c1 = new Conta();
-        c1.setNomedaConta("Casas Bahia");
-        contas.add(c1);
-
-        Conta c2 = new Conta();
-        c2.setNomedaConta("Ponto Frio");
-        contas.add(c2);
-
-        Conta c3 = new Conta();
-        c3.setNomedaConta("Lojas Americanas");
-        contas.add(c3);
-
-        return contas;
     }
 }

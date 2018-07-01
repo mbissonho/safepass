@@ -58,7 +58,7 @@ public class ContaAdapter extends RecyclerView.Adapter{
         public ContaHolder(View view){
             super(view);
 
-            this.nomeDaConta= view.findViewById(R.id.lNomeConta);
+            this.nomeDaConta= view.findViewById(R.id.tNomeConta);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -27,7 +27,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/lNomeConta"
+                android:id="@+id/tNomeConta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
