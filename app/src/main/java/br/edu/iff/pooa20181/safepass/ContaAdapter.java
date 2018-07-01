@@ -2,6 +2,7 @@ package br.edu.iff.pooa20181.safepass;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -89,7 +90,21 @@ public class ContaAdapter extends RecyclerView.Adapter{
             this.btnVer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(view.getContext(),"Clicou!", Toast.LENGTH_SHORT).show();
+
+                    Conta conta = ContaHolder.this.conta;
+
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(view.getContext());
+                    dialog.setTitle("Conta["+conta.getId()+"]: "+conta.getNomedaConta());
+
+                    dialog.setMessage(
+                        "Web: "+conta.getUrlSite()+"\n"+
+                        "Login: "+conta.getLogin()+"\n"+
+                        "Senha: "+conta.getHashPassword()+"\n"+
+                        "Notas: "+conta.getNotas()+"\n"
+                    );
+
+                    dialog.setNeutralButton("OK",null);
+                    dialog.show();
                 }
             });
 
