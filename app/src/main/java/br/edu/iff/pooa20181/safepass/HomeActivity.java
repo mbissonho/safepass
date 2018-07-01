@@ -9,11 +9,16 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import io.realm.Realm;
 
@@ -63,6 +68,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onResume() {
         super.onResume();
+
+        RecyclerView recyclerView = findViewById(R.id.rvContas);
+
+        recyclerView.setAdapter(new ContaAdapter(this.getContas(),this,this));
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
@@ -145,5 +156,24 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public void finish() {
         super.finish();
         this.realm.close();
+    }
+
+    public List<Conta> getContas() {
+
+        ArrayList<Conta> contas = new ArrayList<Conta>();
+
+        Conta c1 = new Conta();
+        c1.setNomedaConta("Casas Bahia");
+        contas.add(c1);
+
+        Conta c2 = new Conta();
+        c2.setNomedaConta("Ponto Frio");
+        contas.add(c2);
+
+        Conta c3 = new Conta();
+        c3.setNomedaConta("Lojas Americanas");
+        contas.add(c3);
+
+        return contas;
     }
 }

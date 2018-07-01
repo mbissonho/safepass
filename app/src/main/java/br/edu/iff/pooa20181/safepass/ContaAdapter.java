@@ -39,7 +39,9 @@ public class ContaAdapter extends RecyclerView.Adapter{
 
         ContaHolder contaHolder = (ContaHolder) holder;
 
-        Conta eleitor = this.contas.get(position);
+        Conta conta = this.contas.get(position);
+
+        contaHolder.nomeDaConta.setText(conta.getNomedaConta());
     }
 
 
