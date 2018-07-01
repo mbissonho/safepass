@@ -6,7 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -41,7 +43,9 @@ public class ContaAdapter extends RecyclerView.Adapter{
 
         Conta conta = this.contas.get(position);
 
+        contaHolder.setConta(conta);
         contaHolder.nomeDaConta.setText(conta.getNomedaConta());
+        contaHolder.bindListeners();
     }
 
 
@@ -53,12 +57,16 @@ public class ContaAdapter extends RecyclerView.Adapter{
 
     public class ContaHolder extends RecyclerView.ViewHolder {
 
+        private ImageButton btnVer, btnWeb;
         private TextView nomeDaConta;
+        private Conta conta;
 
         public ContaHolder(View view){
             super(view);
 
             this.nomeDaConta= view.findViewById(R.id.tNomeConta);
+            this.btnVer = view.findViewById(R.id.btnVer);
+            this.btnWeb = view.findViewById(R.id.btnWeb);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -66,6 +74,32 @@ public class ContaAdapter extends RecyclerView.Adapter{
                     clickRecyclerViewListener.onClick(ContaAdapter.this.contas.get(getLayoutPosition()));
                 }
             });
+        }
+
+        public Conta getConta() {
+            return conta;
+        }
+
+        public void setConta(Conta conta) {
+            this.conta = conta;
+        }
+
+        private void bindListeners(){
+
+            this.btnVer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(view.getContext(),"Clicou!", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            btnWeb.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(view.getContext(), "Clicou!", Toast.LENGTH_SHORT).show();
+                }
+            });
+
         }
 
     }
