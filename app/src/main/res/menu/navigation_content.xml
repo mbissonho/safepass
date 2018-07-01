@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_nova_conta"
+            android:icon="@drawable/ic_new"
+            android:title="Criar conta" />
+        <item
+            android:id="@+id/nav_gerar_senha"
+            android:icon="@drawable/ic_sync"
+            android:title="Gerar senha" />
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/ic_build"
+            android:title="Opções" />
+
+        <item
+            android:id="@+id/nav_log_out"
+            android:icon="@drawable/ic_meeting_room"
+            android:title="Sair" />
+
+    </group>
+
+
+
+</menu>
