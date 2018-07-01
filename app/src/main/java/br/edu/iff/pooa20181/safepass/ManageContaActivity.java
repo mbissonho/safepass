@@ -75,7 +75,7 @@ public class ManageContaActivity extends AppCompatActivity {
         this.btnDeletar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                ManageContaActivity.this.deletar();
             }
         });
 
@@ -119,7 +119,13 @@ public class ManageContaActivity extends AppCompatActivity {
     }
 
     private void deletar(){
+        realm.beginTransaction();
+        this.conta.deleteFromRealm();
+        realm.commitTransaction();
+        realm.close();
 
+        Toast.makeText(this,"Conta Excluída com sucesso!",Toast.LENGTH_LONG).show();
+        this.finish();
     }
 
     private void bind(){
