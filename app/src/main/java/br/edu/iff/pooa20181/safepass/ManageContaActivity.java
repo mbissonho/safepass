@@ -30,6 +30,9 @@ public class ManageContaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_conta);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         this.layout = findViewById(R.id.manage_conta_layout);
 
         this.bind();
@@ -40,6 +43,7 @@ public class ManageContaActivity extends AppCompatActivity {
 
         if(this.id != 0){
 
+            this.setTitle("Gerenciar Conta");
             this.btnSalvar.setEnabled(false);
 
             this.conta = this.realm.where(Conta.class).equalTo("id",this.id).findFirst();
@@ -55,10 +59,13 @@ public class ManageContaActivity extends AppCompatActivity {
             this.tNotas.setText(this.conta.getNotas());
 
 
+
         }else{
 
+            this.setTitle("Criar Conta");
             this.btnDeletar.setEnabled(false);
             this.btnAtualizar.setEnabled(false);
+
 
         }
 
@@ -197,5 +204,10 @@ public class ManageContaActivity extends AppCompatActivity {
         return false;
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 
 }
