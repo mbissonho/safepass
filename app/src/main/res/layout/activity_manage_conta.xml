@@ -14,6 +14,7 @@
         tools:layout_editor_absoluteY="0dp">
 
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/manage_conta_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

@@ -1,5 +1,6 @@
 package br.edu.iff.pooa20181.safepass;
 
+import android.support.constraint.ConstraintLayout;
 import android.util.Base64;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -22,10 +23,14 @@ public class ManageContaActivity extends AppCompatActivity {
     private Conta conta;
     private Realm realm;
 
+    private ConstraintLayout layout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_conta);
+
+        this.layout = findViewById(R.id.manage_conta_layout);
 
         this.bind();
 
@@ -90,32 +95,47 @@ public class ManageContaActivity extends AppCompatActivity {
             nextID = this.realm.where(Conta.class).max("id").intValue() + 1;
         }
 
-        this.realm.beginTransaction();
+        if(this.verifyEmpty()){
 
-        Conta c = new Conta();
-        c.setId(nextID);
+            this.launchMessage("Preencha todos os campos para cadastrar!");
 
-        populate(c);
+        }else{
 
-        this.realm.copyToRealm(c);
-        this.realm.commitTransaction();
-        this.realm.close();
+            this.realm.beginTransaction();
 
-        this.launchMessage("Conta cadastrada com Sucesso!");
-        this.finish();
+            Conta c = new Conta();
+            c.setId(nextID);
+
+            populate(c);
+
+            this.realm.copyToRealm(c);
+            this.realm.commitTransaction();
+            this.realm.close();
+
+            this.launchMessage("Conta cadastrada com Sucesso!");
+            this.finish();
+
+        }
+
+
     }
 
     private void atualizar(){
-        realm.beginTransaction();
 
-        populate(this.conta);
+        if(this.verifyEmpty()){
+            this.launchMessage("Preencha todos os campos para atualizar!");
+        }else{
+            realm.beginTransaction();
 
-        realm.copyToRealm(this.conta);
-        realm.commitTransaction();
-        realm.close();
+            populate(this.conta);
 
-        this.launchMessage("Conta atualizada com sucesso!");
-        this.finish();
+            realm.copyToRealm(this.conta);
+            realm.commitTransaction();
+            realm.close();
+
+            this.launchMessage("Conta atualizada com sucesso!");
+            this.finish();
+        }
     }
 
     private void deletar(){
@@ -159,5 +179,23 @@ public class ManageContaActivity extends AppCompatActivity {
     private void launchMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
+
+    private boolean verifyEmpty(){
+        for (int i = 0; i < this.layout.getChildCount(); i++) {
+            View child = this.layout.getChildAt(i);
+
+            if (child instanceof EditText) {
+
+                EditText editText = (EditText) child;
+
+                if(editText.getText().toString().trim().isEmpty() || editText.getText().toString().trim().equals("")){
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
 
 }
