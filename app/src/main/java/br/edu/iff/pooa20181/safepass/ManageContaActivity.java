@@ -37,6 +37,19 @@ public class ManageContaActivity extends AppCompatActivity {
 
             this.btnSalvar.setEnabled(false);
 
+            this.conta = this.realm.where(Conta.class).equalTo("id",this.id).findFirst();
+
+            this.tNomeDaConta.setText(this.conta.getNomedaConta());
+            this.tUrlSite.setText(this.conta.getUrlSite());
+            this.tLogin.setText(this.conta.getLogin());
+
+            //Persistência de senha encriptada será implementada posteriormente!
+            //byte[] pass = Base64.decode(this.conta.getHashPassword(), Base64.DEFAULT);
+
+            this.tPass.setText(this.conta.getHashPassword());
+            this.tNotas.setText(this.conta.getNotas());
+
+
         }else{
 
             this.btnDeletar.setEnabled(false);
@@ -55,7 +68,7 @@ public class ManageContaActivity extends AppCompatActivity {
         this.btnAtualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                ManageContaActivity.this.atualizar();
             }
         });
 
@@ -92,6 +105,23 @@ public class ManageContaActivity extends AppCompatActivity {
         this.finish();
     }
 
+    private void atualizar(){
+        realm.beginTransaction();
+
+        populate(this.conta);
+
+        realm.copyToRealm(this.conta);
+        realm.commitTransaction();
+        realm.close();
+
+        Toast.makeText(this,"Conta atualizada com sucesso!",Toast.LENGTH_LONG).show();
+        this.finish();
+    }
+
+    private void deletar(){
+
+    }
+
     private void bind(){
         this.tNomeDaConta = findViewById(R.id.tNomeConta);
         this.tUrlSite = findViewById(R.id.tUrl);
@@ -111,15 +141,12 @@ public class ManageContaActivity extends AppCompatActivity {
         conta.setUrlSite(this.tUrlSite.getText().toString());
         conta.setLogin(this.tLogin.getText().toString());
 
-        byte[] pass = this.tPass.getText().toString().getBytes();
+        //byte[] pass = this.tPass.getText().toString().getBytes();
 
-        conta.setHashPassword(String.valueOf(Base64.encode(pass, Base64.DEFAULT)));
+        //Persistência de senha encriptada será implementada posteriormente!
+        //conta.setHashPassword(String.valueOf(Base64.encode(pass, Base64.DEFAULT)));
+        conta.setHashPassword(this.tPass.getText().toString());
+
         conta.setNotas(this.tNotas.getText().toString());
     }
-
-    @Override
-    public void finish(){
-        super.finish();
-    }
-
 }
