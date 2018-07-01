@@ -1,5 +1,6 @@
 package br.edu.iff.pooa20181.safepass;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -31,7 +32,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    launchMessage("Ainda não implementado!");
+                    Intent intent = new Intent(HomeActivity.this, ManageContaActivity.class);
+                    startActivity(intent);
                 }
             });
         }

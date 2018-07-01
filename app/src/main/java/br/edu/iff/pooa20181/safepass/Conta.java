@@ -2,11 +2,13 @@ package br.edu.iff.pooa20181.safepass;
 
 import org.w3c.dom.Text;
 
+import java.io.Serializable;
+
 import io.realm.RealmObject;
 import io.realm.annotations.Ignore;
 import io.realm.annotations.PrimaryKey;
 
-public class Conta extends RealmObject {
+public class Conta extends RealmObject implements Serializable {
 
     @PrimaryKey
     private int id;
@@ -16,7 +18,7 @@ public class Conta extends RealmObject {
     private String password;
     private String login;
     private String hashPassword;
-    private Text notas;
+    private String notas;
 
     public Conta(){
 
@@ -70,11 +72,11 @@ public class Conta extends RealmObject {
         this.hashPassword = hashPassword;
     }
 
-    public Text getNotas() {
+    public String getNotas() {
         return notas;
     }
 
-    public void setNotas(Text notas) {
+    public void setNotas(String notas) {
         this.notas = notas;
     }
 }
