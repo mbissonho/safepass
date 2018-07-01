@@ -11,4 +11,11 @@ public class Conta extends RealmObject {
     private String nome;
     private String password;
     private String hashPassword;
+
+    public Conta(){
+
+    }
+
+
+
 }
