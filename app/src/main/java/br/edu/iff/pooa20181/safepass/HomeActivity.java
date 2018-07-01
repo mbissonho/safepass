@@ -15,10 +15,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+import io.realm.Realm;
 
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ClickRecyclerViewListener {
+
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private Realm realm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        this.realm = Realm.getDefaultInstance();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         if (fab != null) {
@@ -53,6 +58,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         if (this.navigationView != null) {
             this.navigationView.setNavigationItemSelectedListener(this);
         }
+    }//onCreate
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
     }
 
     @Override
@@ -123,5 +134,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     public void launchMessage(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onClick(Object object) {
+
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        this.realm.close();
     }
 }
