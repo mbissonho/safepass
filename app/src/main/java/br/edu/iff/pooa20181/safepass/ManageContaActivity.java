@@ -101,7 +101,7 @@ public class ManageContaActivity extends AppCompatActivity {
         this.realm.commitTransaction();
         this.realm.close();
 
-        Toast.makeText(this,"Conta cadastrada com Sucesso!",Toast.LENGTH_LONG).show();
+        this.launchMessage("Conta cadastrada com Sucesso!");
         this.finish();
     }
 
@@ -114,7 +114,7 @@ public class ManageContaActivity extends AppCompatActivity {
         realm.commitTransaction();
         realm.close();
 
-        Toast.makeText(this,"Conta atualizada com sucesso!",Toast.LENGTH_LONG).show();
+        this.launchMessage("Conta atualizada com sucesso!");
         this.finish();
     }
 
@@ -124,7 +124,7 @@ public class ManageContaActivity extends AppCompatActivity {
         realm.commitTransaction();
         realm.close();
 
-        Toast.makeText(this,"Conta Excluída com sucesso!",Toast.LENGTH_LONG).show();
+        this.launchMessage("Conta excluída com sucesso!");
         this.finish();
     }
 
@@ -155,4 +155,9 @@ public class ManageContaActivity extends AppCompatActivity {
 
         conta.setNotas(this.tNotas.getText().toString());
     }
+
+    private void launchMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
 }
