@@ -44,7 +44,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 public void onClick(View view) {
                     Intent intent = new Intent(HomeActivity.this, ManageContaActivity.class);
                     intent.putExtra("id",0);
-                    startActivity(intent);
+                    HomeActivity.this.startActivity(intent);
                 }
             });
         }
@@ -72,7 +72,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         RecyclerView recyclerView = findViewById(R.id.rvContas);
 
-        recyclerView.setAdapter(new ContaAdapter(this.getContas(),this,this));
+        ContaAdapter contaAdapter = new ContaAdapter(this.getContas(),HomeActivity.this,this);
+
+        recyclerView.setAdapter(contaAdapter);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

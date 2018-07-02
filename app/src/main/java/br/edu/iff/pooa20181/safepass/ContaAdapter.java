@@ -1,6 +1,8 @@
 package br.edu.iff.pooa20181.safepass;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
@@ -33,6 +35,7 @@ public class ContaAdapter extends RecyclerView.Adapter{
 
         View view = LayoutInflater.from(this.ctx).inflate(R.layout.item_conta, parent, false);
         ContaHolder contaHolder = new ContaHolder(view);
+        contaHolder.setContext(this.ctx);
 
         return contaHolder;
     }
@@ -58,6 +61,7 @@ public class ContaAdapter extends RecyclerView.Adapter{
 
     public class ContaHolder extends RecyclerView.ViewHolder {
 
+        private Context context;
         private ImageButton btnVer, btnWeb;
         private TextView nomeDaConta;
         private Conta conta;
@@ -65,7 +69,7 @@ public class ContaAdapter extends RecyclerView.Adapter{
         public ContaHolder(View view){
             super(view);
 
-            this.nomeDaConta= view.findViewById(R.id.tNomeConta);
+            this.nomeDaConta = view.findViewById(R.id.tNomeConta);
             this.btnVer = view.findViewById(R.id.btnVer);
             this.btnWeb = view.findViewById(R.id.btnWeb);
 
@@ -77,13 +81,10 @@ public class ContaAdapter extends RecyclerView.Adapter{
             });
         }
 
-        public Conta getConta() {
-            return conta;
-        }
-
         public void setConta(Conta conta) {
             this.conta = conta;
         }
+        public void setContext(Context context) {this.context = context;}
 
         private void bindListeners(){
 
@@ -111,12 +112,15 @@ public class ContaAdapter extends RecyclerView.Adapter{
             btnWeb.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(view.getContext(), "Clicou!", Toast.LENGTH_SHORT).show();
+                    String url = "https://"+ContaHolder.this.conta.getUrlSite();
+                    Uri uri = Uri.parse(url);
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    context.startActivity(intent);
                 }
             });
 
         }
 
-    }
+    }//ContaHolder
 
 }
