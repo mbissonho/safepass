@@ -1,16 +1,15 @@
 package br.edu.iff.pooa20181.safepass;
 
 import android.support.constraint.ConstraintLayout;
-import android.util.Base64;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import br.edu.iff.pooa20181.safepass.model.Conta;
 import io.realm.Realm;
 
 
@@ -43,7 +42,7 @@ public class ManageContaActivity extends AppCompatActivity {
 
         if(this.id != 0){
 
-            this.setTitle("Gerenciar Conta");
+            this.setTitle(R.string.manage_conta_title);
             this.btnSalvar.setEnabled(false);
 
             this.conta = this.realm.where(Conta.class).equalTo("id",this.id).findFirst();
@@ -62,7 +61,7 @@ public class ManageContaActivity extends AppCompatActivity {
 
         }else{
 
-            this.setTitle("Criar Conta");
+            this.setTitle(R.string.create_conta_title);
             this.btnDeletar.setEnabled(false);
             this.btnAtualizar.setEnabled(false);
 
@@ -104,7 +103,7 @@ public class ManageContaActivity extends AppCompatActivity {
 
         if(this.verifyEmpty()){
 
-            this.launchMessage("Preencha todos os campos para cadastrar!");
+            this.launchMessage(R.string.fill_fields_msg);
 
         }else{
 
@@ -119,7 +118,7 @@ public class ManageContaActivity extends AppCompatActivity {
             this.realm.commitTransaction();
             this.realm.close();
 
-            this.launchMessage("Conta cadastrada com Sucesso!");
+            this.launchMessage(R.string.create_conta_success_msg);
             this.finish();
 
         }
@@ -130,7 +129,7 @@ public class ManageContaActivity extends AppCompatActivity {
     private void atualizar(){
 
         if(this.verifyEmpty()){
-            this.launchMessage("Preencha todos os campos para atualizar!");
+            this.launchMessage(R.string.fill_fields_msg);
         }else{
             realm.beginTransaction();
 
@@ -140,7 +139,7 @@ public class ManageContaActivity extends AppCompatActivity {
             realm.commitTransaction();
             realm.close();
 
-            this.launchMessage("Conta atualizada com sucesso!");
+            this.launchMessage(R.string.update_conta_success_msg);
             this.finish();
         }
     }
@@ -151,7 +150,7 @@ public class ManageContaActivity extends AppCompatActivity {
         realm.commitTransaction();
         realm.close();
 
-        this.launchMessage("Conta excluída com sucesso!");
+        this.launchMessage(R.string.delete_conta_success_msg);
         this.finish();
     }
 
@@ -183,7 +182,7 @@ public class ManageContaActivity extends AppCompatActivity {
         conta.setNotas(this.tNotas.getText().toString());
     }
 
-    private void launchMessage(String message) {
+    private void launchMessage(int message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 

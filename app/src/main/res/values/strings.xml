@@ -2,6 +2,16 @@
     <string name="app_name">SafePass</string>
     <string name="action_settings">Settings</string>
 
+    <string name="create_conta_title">Criar Conta</string>
+    <string name="manage_conta_title">Gerenciar Conta</string>
+
+    <string name="fill_fields_msg">"Preencha todos os campos!"</string>
+    <string name="create_conta_success_msg">Conta cadastrada com Sucesso!</string>
+    <string name="update_conta_success_msg">Conta atualizada com sucesso!</string>
+    <string name="delete_conta_success_msg">Conta excluída com sucesso!</string>
+
+    <string name="not_implemented_msg">Ainda não implementado!</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 

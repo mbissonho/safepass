@@ -3,7 +3,6 @@ package br.edu.iff.pooa20181.safepass;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -17,9 +16,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import br.edu.iff.pooa20181.safepass.adapter.ContaAdapter;
+import br.edu.iff.pooa20181.safepass.model.Conta;
 import io.realm.Realm;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ClickRecyclerViewListener {
@@ -105,9 +105,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         int id = item.getItemId();
 
+        /*
+
+        A implementar
+
         if (id == R.id.action_settings) {
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
@@ -130,13 +134,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_gerar_senha:
 
                 this.drawerLayout.closeDrawer(GravityCompat.START);
-                launchMessage("Ainda não implementado!");
+                launchMessage(R.string.not_implemented_msg);
                 return true;
             case R.id.nav_manage:
 
                 this.drawerLayout.closeDrawer(GravityCompat.START);
 
-                launchMessage("Ainda não implementado!");
+                launchMessage(R.string.not_implemented_msg);
 
                 return true;
             case R.id.nav_log_out:
@@ -150,7 +154,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    public void launchMessage(String message) {
+    public void launchMessage(int message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 

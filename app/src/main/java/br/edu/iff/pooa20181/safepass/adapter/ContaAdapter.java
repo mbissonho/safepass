@@ -1,4 +1,4 @@
-package br.edu.iff.pooa20181.safepass;
+package br.edu.iff.pooa20181.safepass.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,9 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
+
+import br.edu.iff.pooa20181.safepass.ClickRecyclerViewListener;
+import br.edu.iff.pooa20181.safepass.R;
+import br.edu.iff.pooa20181.safepass.model.Conta;
 
 public class ContaAdapter extends RecyclerView.Adapter{
 
