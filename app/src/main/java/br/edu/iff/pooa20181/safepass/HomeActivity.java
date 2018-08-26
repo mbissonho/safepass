@@ -1,5 +1,9 @@
 package br.edu.iff.pooa20181.safepass;
 
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -64,6 +68,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         if (this.navigationView != null) {
             this.navigationView.setNavigationItemSelectedListener(this);
         }
+
     }//onCreate
 
     @Override
@@ -134,7 +139,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_gerar_senha:
 
                 this.drawerLayout.closeDrawer(GravityCompat.START);
-                launchMessage(R.string.not_implemented_msg);
+
+                Dialog dialog = new PassMakerDialog(this);
+                dialog.show();
+
                 return true;
             case R.id.nav_manage:
 
@@ -173,8 +181,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public List<Conta> getContas() {
-
         return this.realm.where(Conta.class).findAll();
-
     }
 }
