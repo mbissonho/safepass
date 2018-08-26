@@ -17,6 +17,7 @@ public class Start extends Application {
                 .deleteRealmIfMigrationNeeded()
                 .build();
         Realm.setDefaultConfiguration(config);
+
     }
 
 }
