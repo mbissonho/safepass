@@ -104,7 +104,7 @@ public class ManageContaActivity extends AppCompatActivity {
 
         if(Helper.verifyEmpty(this.layout)){
 
-            this.launchMessage(R.string.fill_fields_msg);
+            Helper.launchMessage(this,R.string.fill_fields_msg);
 
         }else{
 
@@ -119,7 +119,7 @@ public class ManageContaActivity extends AppCompatActivity {
             this.realm.commitTransaction();
             this.realm.close();
 
-            this.launchMessage(R.string.create_conta_success_msg);
+            Helper.launchMessage(this,R.string.create_conta_success_msg);
             this.finish();
 
         }
@@ -130,7 +130,7 @@ public class ManageContaActivity extends AppCompatActivity {
     private void atualizar(){
 
         if(Helper.verifyEmpty(this.layout)){
-            this.launchMessage(R.string.fill_fields_msg);
+            Helper.launchMessage(this,R.string.fill_fields_msg);
         }else{
             realm.beginTransaction();
 
@@ -140,7 +140,7 @@ public class ManageContaActivity extends AppCompatActivity {
             realm.commitTransaction();
             realm.close();
 
-            this.launchMessage(R.string.update_conta_success_msg);
+            Helper.launchMessage(this,R.string.update_conta_success_msg);
             this.finish();
         }
     }
@@ -151,7 +151,7 @@ public class ManageContaActivity extends AppCompatActivity {
         realm.commitTransaction();
         realm.close();
 
-        this.launchMessage(R.string.delete_conta_success_msg);
+        Helper.launchMessage(this,R.string.delete_conta_success_msg);
         this.finish();
     }
 
@@ -181,10 +181,6 @@ public class ManageContaActivity extends AppCompatActivity {
         conta.setHashPassword(this.tPass.getText().toString());
 
         conta.setNotas(this.tNotas.getText().toString());
-    }
-
-    private void launchMessage(int message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
