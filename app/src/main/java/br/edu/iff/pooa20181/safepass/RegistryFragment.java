@@ -54,8 +54,6 @@ public class RegistryFragment extends Fragment {
                         pass = RegistryFragment.this.tPass.getText().toString();
                         repass = RegistryFragment.this.tRePass.getText().toString();
 
-
-
                         if(pass.compareTo(repass) != 0){
                             Helper.launchMessage(getContext(), "As senhas informadas não são iguais!");
                         }else{
