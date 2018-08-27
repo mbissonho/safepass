@@ -14,8 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="76dp"
         android:text="@string/app_name"
-        android:textSize="50sp"
         android:textColor="@color/colorWhite"
+        android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -31,5 +31,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lSplash"
         app:srcCompat="@drawable/safepass" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:indeterminateTint="@color/colorWhite"
+
+        />
 
 </android.support.constraint.ConstraintLayout>

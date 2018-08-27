@@ -97,6 +97,17 @@ public class ManageContaActivity extends AppCompatActivity {
             }
         });
 
+        /*this.tPass.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+                Toast.makeText(getApplicationContext(),
+                        "TESTE!", Toast.LENGTH_LONG).show();
+
+                return false;
+            }
+        });
+        */
 
     }
 
