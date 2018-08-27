@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import br.edu.iff.pooa20181.safepass.model.SafePass;
 import io.realm.Realm;
 
 public class LoginFragment extends Fragment {

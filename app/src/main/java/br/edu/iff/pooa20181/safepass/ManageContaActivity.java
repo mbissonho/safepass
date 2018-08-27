@@ -4,6 +4,7 @@ import android.support.constraint.ConstraintLayout;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -66,6 +67,11 @@ public class ManageContaActivity extends AppCompatActivity {
             this.btnDeletar.setEnabled(false);
             this.btnAtualizar.setEnabled(false);
 
+            String genPass = (String) intent.getSerializableExtra("genPass");
+
+            if(genPass != null){
+                this.tPass.setText(genPass);
+            }
 
         }
 

@@ -8,44 +8,21 @@
     android:layout_marginTop="15dp"
     >
 
-    <LinearLayout
-        android:layout_width="fill_parent"
+    <TextView
+        android:id="@+id/genPass"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btnGen"
-            android:layout_width="70dp"
-            android:layout_height="50dp"
-            android:layout_weight="0"
-            android:text="GEN" />
-
-        <TextView
-            android:id="@+id/genPass"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#ccc"
-            android:padding="3dp"
-            android:text="jdoa&amp;14y"
-            android:textSize="22dp" />
-
-
-        <Button
-            android:id="@+id/btnCopy"
-            android:layout_width="70dp"
-            android:layout_height="50dp"
-            android:layout_weight="0"
-            android:text="COPY" />
-
-    </LinearLayout>
+        android:layout_weight="1"
+        android:background="#ccc"
+        android:padding="3dp"
+        android:text="jdoa&amp;14y"
+        android:textSize="22dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="10dp"
-        >
+        android:orientation="horizontal">
 
 
         <TextView
@@ -61,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:text="0" />
+            android:text="8" />
 
     </LinearLayout>
 
@@ -70,5 +47,34 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginTop="10dp" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnGen"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_weight="0"
+            android:text="GEN" />
+
+
+        <Button
+            android:id="@+id/btnCopy"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_weight="0"
+            android:text="COPY" />
+
+        <Button
+            android:id="@+id/btnNew"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_weight="0"
+            android:text="NEW" />
+
+    </LinearLayout>
 
 </LinearLayout>

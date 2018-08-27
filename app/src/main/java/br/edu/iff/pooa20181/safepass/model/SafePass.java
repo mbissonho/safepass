@@ -1,4 +1,4 @@
-package br.edu.iff.pooa20181.safepass;
+package br.edu.iff.pooa20181.safepass.model;
 
 import java.io.Serializable;
 
