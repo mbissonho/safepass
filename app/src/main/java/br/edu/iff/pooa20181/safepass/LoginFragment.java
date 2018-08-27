@@ -1,5 +1,6 @@
 package br.edu.iff.pooa20181.safepass;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -14,6 +15,8 @@ import android.widget.Toast;
 
 public class LoginFragment extends Fragment {
 
+    LoginActivity loginActivity;
+
     private EditText tEmail, tPass;
     private TextView lRegistry;
     private Button btnLogin;
@@ -26,6 +29,8 @@ public class LoginFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
+        this.loginActivity = (LoginActivity) getContext();
+
         this.tEmail = view.findViewById(R.id.tEmail);
         this.tPass = view.findViewById(R.id.tPass);
         this.btnLogin = view.findViewById(R.id.btnLogin);
@@ -34,8 +39,8 @@ public class LoginFragment extends Fragment {
         this.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity().getApplicationContext(),
-                        "Teste!", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(LoginFragment.this.loginActivity, HomeActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,7 +23,7 @@ public class ManageContaActivity extends AppCompatActivity {
     private Conta conta;
     private Realm realm;
 
-    private ConstraintLayout layout;
+    private ViewGroup layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,7 +102,7 @@ public class ManageContaActivity extends AppCompatActivity {
             nextID = this.realm.where(Conta.class).max("id").intValue() + 1;
         }
 
-        if(this.verifyEmpty()){
+        if(Helper.verifyEmpty(this.layout)){
 
             this.launchMessage(R.string.fill_fields_msg);
 
@@ -128,7 +129,7 @@ public class ManageContaActivity extends AppCompatActivity {
 
     private void atualizar(){
 
-        if(this.verifyEmpty()){
+        if(Helper.verifyEmpty(this.layout)){
             this.launchMessage(R.string.fill_fields_msg);
         }else{
             realm.beginTransaction();
@@ -184,23 +185,6 @@ public class ManageContaActivity extends AppCompatActivity {
 
     private void launchMessage(int message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
-
-    private boolean verifyEmpty(){
-        for (int i = 0; i < this.layout.getChildCount(); i++) {
-            View child = this.layout.getChildAt(i);
-
-            if (child instanceof EditText) {
-
-                EditText editText = (EditText) child;
-
-                if(editText.getText().toString().trim().isEmpty() || editText.getText().toString().trim().equals("")){
-                    return true;
-                }
-            }
-        }
-
-        return false;
     }
 
     @Override

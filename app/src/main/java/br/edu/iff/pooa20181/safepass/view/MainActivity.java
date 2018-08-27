@@ -12,16 +12,12 @@ import io.realm.Realm;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Realm realm;
-
     private static int SPLASH_TIME = 5000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        this.realm = Realm.getDefaultInstance();
 
         new Handler().postDelayed(new Runnable() {
             @Override

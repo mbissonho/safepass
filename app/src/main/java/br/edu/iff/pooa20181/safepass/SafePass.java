@@ -1,11 +1,51 @@
 package br.edu.iff.pooa20181.safepass;
 
-public class SafePass {
+import java.io.Serializable;
 
-    private static boolean persisted = false;
+import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
+import io.realm.annotations.PrimaryKey;
 
-    private SafePass(){}
+public class SafePass extends RealmObject implements Serializable {
 
-    private String masterPass;
+    @PrimaryKey
+    private int id;
+    @Ignore
+    private static SafePass instance = null;
 
+    public SafePass(){}
+
+    private String email, masterPass;
+
+    public static  void setInstance(SafePass safePass){
+        instance = safePass;
+    }
+
+    public static SafePass getInstance(){
+        return instance;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getMasterPass() {
+        return masterPass;
+    }
+
+    public void setMasterPass(String masterPass) {
+        this.masterPass = masterPass;
+    }
 }
